@@ -1,4 +1,4 @@
-CC = i686-w64-mingw32-gcc
+CC = gcc
 CFLAGS = -Wall -mno-ms-bitfields
 PROGS = mass-storage
 
@@ -6,7 +6,7 @@ all:	${PROGS}
 
 mass-storage:	usbip.c mass-storage.c 
 		${CC} ${CFLAGS} usbip.c -c 
-		${CC} ${CFLAGS} usbip.o mass-storage.c -o mass-storage 
+		${CC} ${CFLAGS} usbip.o mass-storage.c -o mass-storage -lws2_32
 
 clean:
-		rm -f ${PROGS} core core.* *.o temp.* *.out typescript* *.exe
+		rm -f ${PROGS} *.o *.out *.exe
